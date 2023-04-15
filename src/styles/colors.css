@@ -1,0 +1,22 @@
+:root {
+  --color-background-primary: #ffffff;
+  --color-background-secondary: #f7f7f8;
+
+  --color-overlay: rgba(5, 5, 16, 0.16);
+
+  --color-default-primary: #c3c3c6;
+  --color-default-secondary: #c3c3c6;
+
+  --color-active-primary: #6534ff;
+  --color-active-secondary: #050510;
+
+  --color-error: #f44336;
+
+  --color-text-primary: #050510;
+  --color-text-secondary: #55555c;
+  --color-text-tetriary: #97979b;
+  --color-text-on-active: #ffffff;
+
+  --color-button-primary: var(--color-active-primary);
+  --color-button-text-primaty: var(--color-text-on-active);
+}

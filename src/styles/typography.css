@@ -1,0 +1,16 @@
+:root {
+  --font-family-primary: "Inter", Arial, sans-serif;
+
+  --font-headline: 16px/20px var(--font-family-primary);
+  --font-subhead: 14px/18px var(--font-family-primary);
+  --font-caption: 13px/16px var(--font-family-primary);
+  --font-text: 15px/20px var(--font-family-primary);
+
+  --typography-title-primary: normal 700 24px/28px var(--font-family-primary);
+  --typography-title-secondary: normal 600 20px/24px var(--font-family-primary);
+  --typography-title-tetriary: normal 600 17px/22px var(--font-family-primary);
+
+  --typography-headline-regular: normal 400 var(--font-headline);
+  --typography-headline-medium: normal 500 var(--font-headline);
+  --typography-headline-semibold: normal 600 var(--font-headline);
+}
