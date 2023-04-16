@@ -3,6 +3,7 @@ import swcReactRefresh from "@vitejs/plugin-react-swc";
 import autoprefixer from "autoprefixer";
 import dns from "dns";
 import postcssLogical from "postcss-logical";
+import postcssNormalize from "postcss-normalize";
 import { defineConfig } from "vite";
 import svgr from "vite-plugin-svgr";
 
@@ -17,7 +18,7 @@ export default defineConfig({
   esbuild: { jsx: "automatic" },
   css: {
     postcss: {
-      plugins: [autoprefixer, postcssLogical],
+      plugins: [autoprefixer, postcssLogical, postcssNormalize()],
     },
   },
 });

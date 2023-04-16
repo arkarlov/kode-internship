@@ -1,0 +1,43 @@
+.user {
+  display: flex;
+  justify-content: space-between;
+  padding-block: 6px;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  margin-right: 16px;
+}
+
+.personality {
+  display: flex;
+  align-items: center;
+  padding-block: 3px;
+}
+
+.name {
+  font: var(--typography-headline-medium);
+}
+
+.tag {
+  margin-left: 4px;
+  font: var(--font-subhead);
+  color: var(--color-text-tetriary);
+}
+
+.position {
+  font: var(--font-caption);
+  color: var(--color-text-secondary);
+}
+
+.birthday {
+  display: flex;
+  align-items: center;
+  font: var(--font-text);
+  font-weight: 400;
+  color: var(--color-text-secondary);
+}

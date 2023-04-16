@@ -1,8 +1,7 @@
 :root {
   --color-background-primary: #ffffff;
   --color-background-secondary: #f7f7f8;
-
-  --color-overlay: rgba(5, 5, 16, 0.16);
+  --color-background-overlay: rgba(5, 5, 16, 0.16);
 
   --color-default-primary: #c3c3c6;
   --color-default-secondary: #c3c3c6;
@@ -19,4 +18,6 @@
 
   --color-button-primary: var(--color-active-primary);
   --color-button-text-primaty: var(--color-text-on-active);
+
+  --gradient-skeletonn: linear-gradient(90deg, #f3f3f6 0%, #fafafa 100%);
 }
