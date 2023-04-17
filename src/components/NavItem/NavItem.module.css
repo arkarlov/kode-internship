@@ -1,0 +1,24 @@
+.link {
+  display: block;
+  padding: 8px 12px;
+  font: var(--font-text);
+  font-weight: 500;
+  color: var(--color-text-tetriary);
+}
+
+.link.active {
+  position: relative;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.link.active::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-active-primary);
+}

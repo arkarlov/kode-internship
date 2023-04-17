@@ -1,33 +1,21 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
-import { getUsersList, IUser } from "../../api/users";
-import { User } from "../../components/User";
-import styles from "./Employees.module.css";
+import { Department, getUsersList, IUser } from "../../api/users";
+import { UsersList } from "../../components/UsersList";
 
 export function Employees() {
+  const { depId } = useParams();
   const [employees, setEmployees] = useState<IUser[]>([]);
 
   useEffect(() => {
     async function getEmployees() {
-      const data = await getUsersList();
-      setEmployees(data.items);
+      const data = await getUsersList(depId as Department);
+      setEmployees(data);
     }
 
     getEmployees();
-  }, []);
+  }, [depId]);
 
-  return (
-    <>
-      <header className={styles.header}>header</header>
-      <main className={styles.main}>
-        <ul>
-          {employees.map((employee) => (
-            <li key={employee.id}>
-              <User user={employee} />
-            </li>
-          ))}
-        </ul>
-      </main>
-    </>
-  );
+  return <UsersList users={employees} />;
 }
