@@ -8,6 +8,7 @@ import { ReactComponent as IconStar } from "../../icons/24/favorite.svg";
 import { ReactComponent as IconPhone } from "../../icons/24/phone-alt.svg";
 import { ReactComponent as IconShevronLeft } from "../../icons/24/Right.svg";
 import { testUser } from "../../mock/user";
+import { useUsersStore } from "../../store";
 import { getFormatDate } from "../../utils";
 import { getNoun } from "../../utils";
 import styles from "./EmployeeProfile.module.css";
@@ -16,10 +17,12 @@ export function EmployeeProfile() {
   const navigate = useNavigate();
   const { employeeId } = useParams();
   const [employee, setEmployee] = useState<IUser | null>(null);
+  const employees = useUsersStore((state) => state.users);
 
   useEffect(() => {
-    setEmployee(testUser);
-  }, [employeeId]);
+    const user = employees.find((item) => item.id === employeeId);
+    if (user) setEmployee(user);
+  }, [employeeId, employees]);
 
   const getAge = () => {
     const currentYear = new Date().getFullYear();

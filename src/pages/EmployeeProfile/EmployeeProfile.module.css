@@ -35,6 +35,11 @@
   font: var(--typography-title-primary);
 }
 
+.position {
+  font: var(--font-caption);
+  color: var(--color-text-secondary);
+}
+
 .tag {
   margin-left: 4px;
   font: var(--typography-title-tetriary);
