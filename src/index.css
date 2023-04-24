@@ -17,6 +17,12 @@ body {
   color: var(--color-text-primary);
 }
 
+html,
+body {
+  height: 100%;
+}
+
 #root {
   isolation: isolate;
+  height: 100%;
 }

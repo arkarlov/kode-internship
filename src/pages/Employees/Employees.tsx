@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import { Department, getUsersList, IUser } from "../../api/users";
-import { UsersList } from "../../components/UsersList";
+import { User } from "../../components/User";
+import styles from "./Employees.module.css";
 
 export function Employees() {
   const { depId } = useParams();
@@ -17,5 +18,15 @@ export function Employees() {
     getEmployees();
   }, [depId]);
 
-  return <UsersList users={employees} />;
+  return (
+    <ul className={styles.list}>
+      {employees.map((user) => (
+        <li key={user.id} className={styles.item}>
+          <Link to={`/employee/${user.id}`}>
+            <User user={user} />
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
 }

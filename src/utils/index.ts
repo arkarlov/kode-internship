@@ -1,4 +1,5 @@
 import { capitalize } from "./capitalize";
 import { getFormatDate } from "./getFormatDate";
+import { getNoun } from "./getNoun";
 
-export { capitalize, getFormatDate };
+export { capitalize, getFormatDate, getNoun };

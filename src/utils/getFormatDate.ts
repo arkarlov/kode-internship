@@ -6,7 +6,7 @@ const MOTH_SHORT_DAY_NUMERIC_DATE_FORMAT = {
 export const getFormatDate = (
   dateString: string,
   options: Intl.DateTimeFormatOptions = MOTH_SHORT_DAY_NUMERIC_DATE_FORMAT,
-  locale?: Intl.LocalesArgument
+  locale: Intl.LocalesArgument = "ru-RU"
 ) => {
   const date = new Date(dateString);
 

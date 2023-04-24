@@ -1,0 +1,79 @@
+.employee {
+  height: 100%;
+  background-color: var(--color-background-primary);
+}
+
+.header {
+  padding: 22px 24px 14px;
+  background-color: var(--color-background-secondary);
+}
+.back {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+.wrapper {
+  padding-block: 12px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--color-background-secondary);
+}
+
+.avatar {
+  margin-bottom: 24px;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.name {
+  font: var(--typography-title-primary);
+}
+
+.tag {
+  margin-left: 4px;
+  font: var(--typography-title-tetriary);
+}
+
+.main {
+  padding: 14px 16px;
+}
+
+.list .item:not(:last-child) {
+  margin-bottom: 6px;
+}
+
+.item {
+  padding-block: 6px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.value {
+  padding-block: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.value > svg {
+  margin-right: 12px;
+}
+
+.value > p {
+  font: var(--font-headline);
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.aside {
+  display: flex;
+  align-items: center;
+  font: var(--font-headline);
+  font-weight: 500;
+  color: var(--color-text-tetriary);
+}

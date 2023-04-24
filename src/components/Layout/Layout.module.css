@@ -1,0 +1,18 @@
+.header {
+  padding: 16px 16px 0;
+  border-bottom: 1px solid var(--color-default-primary);
+}
+
+.main {
+  padding: 16px;
+}
+
+.title {
+  padding: 0 8px;
+  margin-bottom: 18px;
+  font: var(--typography-title-primary);
+}
+
+.search {
+  margin-bottom: 14px;
+}

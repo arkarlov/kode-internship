@@ -8,7 +8,7 @@
 
   --typography-title-primary: normal 700 24px/28px var(--font-family-primary);
   --typography-title-secondary: normal 600 20px/24px var(--font-family-primary);
-  --typography-title-tetriary: normal 600 17px/22px var(--font-family-primary);
+  --typography-title-tetriary: normal 400 17px/22px var(--font-family-primary);
 
   --typography-headline-regular: normal 400 var(--font-headline);
   --typography-headline-medium: normal 500 var(--font-headline);
