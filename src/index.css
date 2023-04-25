@@ -1,5 +1,6 @@
 @import "./styles/_typography.css";
 @import "./styles/_colors.css";
+@import "./styles/_behavior.css";
 @import "./styles/reset.css";
 
 html {

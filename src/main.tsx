@@ -5,9 +5,16 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+import { getUsersList } from "./api/users";
 import { Layout } from "./components/Layout";
 import { EmployeeProfile } from "./pages/EmployeeProfile";
 import { Employees } from "./pages/Employees";
+import { useUsersStore } from "./store";
+
+(async function () {
+  const data = await getUsersList();
+  useUsersStore.setState({ users: data });
+})();
 
 const router = createBrowserRouter([
   {

@@ -4,6 +4,7 @@
   font: var(--font-text);
   font-weight: 500;
   color: var(--color-text-tetriary);
+  transition: var(--transition-color);
 }
 
 .link.active {
