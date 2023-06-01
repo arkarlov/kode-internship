@@ -17,6 +17,7 @@ export interface IUsersList {
 }
 
 export enum Department {
+  All = "all",
   Android = "android",
   Ios = "ios",
   Design = "design",
@@ -31,7 +32,7 @@ export enum Department {
   Analytics = "analytics",
 }
 
-export const getUsersList = async (dep?: Department) => {
+export const getUsersList = async (dep: Department = Department.All) => {
   const query = new URLSearchParams();
 
   query.append("__dynamic", "true");

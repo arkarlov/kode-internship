@@ -6,9 +6,9 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { getUsersList } from "./api/users";
-import { Layout } from "./components/Layout";
 import { EmployeeProfile } from "./pages/EmployeeProfile";
 import { Employees } from "./pages/Employees";
+import { Layout } from "./pages/Layout";
 import { useUsersStore } from "./store";
 
 (async function () {
