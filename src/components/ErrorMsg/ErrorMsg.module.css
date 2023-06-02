@@ -1,0 +1,38 @@
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.error > *:not(:last-child):not(:first-child) {
+  margin-bottom: 12px;
+}
+
+.icon {
+  display: block;
+  width: 56px;
+  height: 56px;
+  margin-bottom: 8px;
+}
+
+.icon > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.heading {
+  font: var(--typography-title-tetriary);
+  color: var(--color-text-primary);
+}
+
+.description {
+  font: var(--typography-headline-regular);
+  color: var(--color-text-tetriary);
+}
+
+.action {
+  font: var(--typography-headline-semibold);
+  color: var(--color-active-primary);
+}
