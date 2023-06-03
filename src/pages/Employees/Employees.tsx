@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { Link, useParams } from "react-router-dom";
 import { shallow } from "zustand/shallow";
 
 import { Department, getUsersList, IUser } from "../../api/users";
 import { ErrorMsg } from "../../components/ErrorMsg";
+import { Modal } from "../../components/Modal";
 import { User } from "../../components/User";
 import { useUsersStore } from "../../store";
 import styles from "./Employees.module.css";
@@ -16,6 +18,8 @@ export function Employees() {
     shallow
   );
 
+  const [showModal, setShowModal] = useState(false);
+
   useEffect(() => {
     async function getEmployees() {
       const data = await getUsersList(depId as Department);
@@ -25,11 +29,22 @@ export function Employees() {
     getEmployees();
   }, [depId, setEmployees]);
 
-  const flag = false;
-
   return (
     <>
-      {employees && flag ? (
+      <button onClick={() => setShowModal(true)}>
+        Show modal using a portal
+      </button>
+      <Modal
+        opened={showModal}
+        onClose={() => {
+          setShowModal(false);
+        }}
+      >
+        <div style={{ width: "200px", height: "200px" }}>
+          sdflkjsdlkfjlskdjf asdf
+        </div>
+      </Modal>
+      {/* {employees ? (
         <ul className={styles.list}>
           {employees.map((user) => (
             <li key={user.id} className={styles.item}>
@@ -48,7 +63,7 @@ export function Employees() {
             }}
           />
         </div>
-      )}
+      )} */}
     </>
   );
 }

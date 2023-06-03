@@ -8,7 +8,7 @@ type UserProps = {
   displayBirthday?: boolean;
 };
 
-export function User({ user, displayBirthday = true }: UserProps) {
+export function User({ user, displayBirthday = false }: UserProps) {
   return (
     <article className={styles.user}>
       <div className={styles.profile}>

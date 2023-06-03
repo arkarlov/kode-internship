@@ -1,0 +1,46 @@
+.modal,
+.overlay {
+  position: fixed;
+  z-index: 1000;
+}
+
+.overlay {
+  cursor: pointer;
+  inset: 0;
+  background-color: var(--color-overlay-primary);
+}
+
+.modal {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  padding: 24px 18px;
+
+  border-radius: 20px;
+  background-color: var(--color-surface-primary);
+}
+
+.close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  z-index: 2;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--color-background-secondary);
+
+  color: var(--color-default-primary);
+
+  transition: var(--transition-color);
+}
+
+.close:hover {
+  color: var(--color-active-secondary);
+}

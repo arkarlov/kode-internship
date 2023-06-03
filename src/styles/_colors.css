@@ -1,7 +1,9 @@
 :root {
   --color-background-primary: #ffffff;
   --color-background-secondary: #f7f7f8;
-  --color-background-overlay: rgba(5, 5, 16, 0.16);
+
+  --color-overlay-primary: rgba(5, 5, 16, 0.16);
+  --color-surface-primary: #ffffff;
 
   --color-default-primary: #c3c3c6;
   --color-default-secondary: #c3c3c6;
@@ -16,8 +18,10 @@
   --color-text-tetriary: #97979b;
   --color-text-on-active: #ffffff;
 
-  --color-button-primary: var(--color-active-primary);
-  --color-button-text-primaty: var(--color-text-on-active);
+  --gradient-primary: linear-gradient(90deg, #f3f3f6 0%, #fafafa 100%);
 
-  --gradient-skeletonn: linear-gradient(90deg, #f3f3f6 0%, #fafafa 100%);
+  --button-color-primary: var(--color-active-primary);
+  --button-text-color-primary: var(--color-text-on-active);
+
+  --skeletonn-gradient: var(--gradient-primary);
 }

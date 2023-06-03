@@ -6,7 +6,7 @@
 }
 
 .avatar.loading {
-  background: var(--gradient-skeletonn);
+  background: var(--skeletonn-gradient);
 }
 
 .avatar.loading img {
