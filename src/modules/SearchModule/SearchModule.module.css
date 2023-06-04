@@ -1,0 +1,20 @@
+.search {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.search__input {
+  padding-inline: 8px;
+  width: 100%;
+  background-color: var(--color-background-secondary);
+  font: var(--font-text);
+  font-weight: 400;
+  caret-color: var(--color-active-primary);
+}
+
+.search__input::placeholder {
+  font: var(--font-text);
+  font-weight: 500;
+  color: var(--color-default-secondary);
+}

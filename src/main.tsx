@@ -13,7 +13,7 @@ import { useUsersStore } from "./store";
 
 (async function () {
   const data = await getUsersList();
-  useUsersStore.setState({ users: data });
+  useUsersStore.setState({ users: data, displayedUsers: data });
 })();
 
 const router = createBrowserRouter([

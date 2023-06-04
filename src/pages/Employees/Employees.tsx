@@ -1,52 +1,31 @@
 import { useEffect, useState } from "react";
-import { createPortal } from "react-dom";
 import { Link, useParams } from "react-router-dom";
-import { shallow } from "zustand/shallow";
 
 import { Department, getUsersList, IUser } from "../../api/users";
 import { ErrorMsg } from "../../components/ErrorMsg";
-import { Modal } from "../../components/Modal";
 import { User } from "../../components/User";
 import { useUsersStore } from "../../store";
 import styles from "./Employees.module.css";
 
 export function Employees() {
   const { depId } = useParams();
-  // const [employees, setEmployees] = useState<IUser[]>([]);
-  const [employees, setEmployees] = useUsersStore(
-    (state) => [state.users, state.setUsers],
-    shallow
-  );
 
-  const [showModal, setShowModal] = useState(false);
+  const setEmployees = useUsersStore((state) => state.setUsers);
+  const displayedList = useUsersStore((state) => state.displayedUsers);
 
   useEffect(() => {
-    async function getEmployees() {
+    (async function () {
       const data = await getUsersList(depId as Department);
-      setEmployees(data);
-    }
-
-    getEmployees();
+      // setEmployees(data);
+      useUsersStore.setState({ users: data, displayedUsers: data });
+    })();
   }, [depId, setEmployees]);
 
   return (
     <>
-      <button onClick={() => setShowModal(true)}>
-        Show modal using a portal
-      </button>
-      <Modal
-        opened={showModal}
-        onClose={() => {
-          setShowModal(false);
-        }}
-      >
-        <div style={{ width: "200px", height: "200px" }}>
-          sdflkjsdlkfjlskdjf asdf
-        </div>
-      </Modal>
-      {/* {employees ? (
+      {displayedList.length > 0 ? (
         <ul className={styles.list}>
-          {employees.map((user) => (
+          {displayedList.map((user) => (
             <li key={user.id} className={styles.item}>
               <Link to={`/employee/${user.id}`}>
                 <User user={user} />
@@ -63,7 +42,7 @@ export function Employees() {
             }}
           />
         </div>
-      )} */}
+      )}
     </>
   );
 }

@@ -2,7 +2,7 @@ import { shallow } from "zustand/shallow";
 
 import { Radio } from "../../components/Radio";
 import { useUsersStore } from "../../store";
-import { getDayOfYear } from "../../utils/getDayOfYear";
+import { getDayOfYear } from "../../utils";
 
 export enum SortOption {
   Default,
