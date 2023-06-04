@@ -1,67 +1,67 @@
 import clsx from "clsx";
+import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 
-import { Department } from "../../api/users";
-import { NavItem } from "../../components/NavItem";
+import { Modal } from "../../components/Modal";
 import { ReactComponent as IconSort } from "../../icons/24/list-ui-alt.svg";
-import { ReactComponent as IconSearch } from "../../icons/24/search.svg";
+import { NavigateModule } from "../../modules/NavigateModule";
+import { SearchModule } from "../../modules/SearchModule";
+import { SortModule, SortOption } from "../../modules/SortModule";
 import styles from "./Layout.module.css";
 
-export const MENU: { title: Department; label: string }[] = [
-  // { title: Department.All, label: "Все" },
-  { title: Department.Android, label: "Android" },
-  { title: Department.Ios, label: "iOS" },
-  { title: Department.Design, label: "Дизайн" },
-  { title: Department.Management, label: "Менеджмент" },
-  { title: Department.Qa, label: "QA" },
-  { title: Department.Back_office, label: "Бэк-офис" },
-  { title: Department.Frontend, label: "Frontend" },
-  { title: Department.Hr, label: "HR" },
-  { title: Department.Pr, label: "PR" },
-  { title: Department.Backend, label: "Backend" },
-  { title: Department.Support, label: "Техподдержка" },
-  { title: Department.Analytics, label: "Аналитика" },
-];
-
 export function Layout() {
-  const sorted = false;
+  const [sorted, setSorted] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
+  const [sortValue, setSortValue] = useState<SortOption>(SortOption.Default);
+
+  const onSort = (v: SortOption) => {
+    setSortValue(v);
+    setShowModal(false);
+
+    if (v === SortOption.Default) {
+      setSorted(false);
+    } else {
+      setSorted(true);
+    }
+  };
 
   return (
     <>
       <header className={styles.header}>
         <h2 className={styles.title}>Поиск</h2>
+
         <div className={styles.search}>
-          <IconSearch className={styles.icon} />
-          <input
-            className={styles.search__input}
-            type="text"
-            placeholder="Введи имя, тег, почту..."
-          />
+          <SearchModule />
           <button
             className={clsx(styles.button, sorted && styles.button_sorted)}
             onClick={() => {
-              console.log("sort");
+              setShowModal(true);
             }}
           >
             <IconSort className={styles.icon} />
           </button>
         </div>
+
         <nav className={styles.nav}>
-          <ul>
-            <li>
-              <NavItem to="/">Все</NavItem>
-            </li>
-            {MENU.map((item, i) => (
-              <li key={i}>
-                <NavItem to={`department/${item.title}`}>{item.label}</NavItem>
-              </li>
-            ))}
-          </ul>
+          <NavigateModule />
         </nav>
       </header>
       <main className={styles.main}>
         <Outlet />
       </main>
+
+      <Modal
+        opened={showModal}
+        onClose={() => {
+          setShowModal(false);
+        }}
+      >
+        <div className={styles.modal}>
+          <h3 className={styles.modal__heading}>Сортировка</h3>
+          <SortModule option={sortValue} onSort={onSort} />
+        </div>
+      </Modal>
     </>
   );
 }
