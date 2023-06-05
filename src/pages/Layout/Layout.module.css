@@ -29,16 +29,7 @@
 
 /* Sort Button */
 .button {
-  color: var(--color-default-primary);
-  transition: var(--transition-color);
-}
-
-.button_sorted {
-  color: var(--color-active-primary);
-}
-
-.button:hover {
-  color: var(--color-active-secondary);
+  flex-shrink: 0;
 }
 
 /* Sort Modal */

@@ -26,21 +26,4 @@
   top: 24px;
   right: 24px;
   z-index: 2;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background-color: var(--color-background-secondary);
-
-  color: var(--color-default-primary);
-
-  transition: var(--transition-color);
-}
-
-.close:hover {
-  color: var(--color-active-secondary);
 }

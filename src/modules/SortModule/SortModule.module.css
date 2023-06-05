@@ -1,0 +1,12 @@
+/* Sort Modal */
+.modal {
+  width: 373px;
+  padding: 24px 16px 8px;
+}
+
+.modal__heading {
+  margin-bottom: 16px;
+  text-align: center;
+  font: var(--typography-title-secondary);
+  color: var(--color-text-primary);
+}

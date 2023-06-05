@@ -1,5 +1,9 @@
-import { Department } from "../../api/users";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+
+import { Department, getUsersList } from "../../api/users";
 import { NavItem } from "../../components/NavItem";
+import { useUsersStore } from "../../store";
 import classes from "./NavigateModule.module.css";
 
 export const MENU: { name: Department; label: string }[] = [
@@ -19,6 +23,15 @@ export const MENU: { name: Department; label: string }[] = [
 ];
 
 export function NavigateModule() {
+  const { depId } = useParams();
+
+  useEffect(() => {
+    (async function () {
+      const data = await getUsersList(depId as Department);
+      useUsersStore.setState({ users: data, displayedUsers: data });
+    })();
+  }, [depId]);
+
   return (
     <ul className={classes.navigation}>
       <li>

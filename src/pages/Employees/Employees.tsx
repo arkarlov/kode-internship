@@ -8,18 +8,18 @@ import { useUsersStore } from "../../store";
 import styles from "./Employees.module.css";
 
 export function Employees() {
-  const { depId } = useParams();
+  // const { depId } = useParams();
 
-  const setEmployees = useUsersStore((state) => state.setUsers);
+  // const setEmployees = useUsersStore((state) => state.setUsers);
   const displayedList = useUsersStore((state) => state.displayedUsers);
 
-  useEffect(() => {
-    (async function () {
-      const data = await getUsersList(depId as Department);
-      // setEmployees(data);
-      useUsersStore.setState({ users: data, displayedUsers: data });
-    })();
-  }, [depId, setEmployees]);
+  // useEffect(() => {
+  //   (async function () {
+  //     const data = await getUsersList(depId as Department);
+  //     // setEmployees(data);
+  //     useUsersStore.setState({ users: data, displayedUsers: data });
+  //   })();
+  // }, [depId, setEmployees]);
 
   return (
     <>

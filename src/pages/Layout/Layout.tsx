@@ -2,7 +2,10 @@ import clsx from "clsx";
 import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 
+import { Button } from "../../components/Button";
 import { Modal } from "../../components/Modal";
+import { Radio } from "../../components/Radio";
+import { useSorting } from "../../hooks/useSorting";
 import { ReactComponent as IconSort } from "../../icons/24/list-ui-alt.svg";
 import { NavigateModule } from "../../modules/NavigateModule";
 import { SearchModule } from "../../modules/SearchModule";
@@ -13,7 +16,7 @@ export function Layout() {
   const [sorted, setSorted] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
-  const [sortValue, setSortValue] = useState<SortOption>(SortOption.Default);
+  const [sortValue, setSortValue] = useSorting();
 
   const onSort = (v: SortOption) => {
     setSortValue(v);
@@ -33,14 +36,21 @@ export function Layout() {
 
         <div className={styles.search}>
           <SearchModule />
-          <button
-            className={clsx(styles.button, sorted && styles.button_sorted)}
+
+          <Button
+            className={clsx(styles.button)}
+            active={sortValue !== SortOption.Default}
             onClick={() => {
               setShowModal(true);
             }}
           >
             <IconSort className={styles.icon} />
-          </button>
+          </Button>
+          <button
+            onClick={() => {
+              setShowModal(true);
+            }}
+          ></button>
         </div>
 
         <nav className={styles.nav}>
@@ -59,7 +69,18 @@ export function Layout() {
       >
         <div className={styles.modal}>
           <h3 className={styles.modal__heading}>Сортировка</h3>
-          <SortModule option={sortValue} onSort={onSort} />
+          {/* <SortModule option={sortValue} onSort={onSort} /> */}
+          <Radio
+            name="sort"
+            options={[
+              { value: SortOption.Default, label: "По алфавиту" },
+              { value: SortOption.Birthday, label: "По дню рождения" },
+            ]}
+            value={sortValue}
+            onChange={(v) => {
+              onSort(v as SortOption);
+            }}
+          />
         </div>
       </Modal>
     </>
