@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-import { Department, getUsersList } from "../../api/users";
+import { Department, getEmployees } from "../../api/employees";
 import { NavItem } from "../../components/NavItem";
-import { useUsersStore } from "../../store";
+import { useEmployeesStore } from "../../store";
 import classes from "./NavigateModule.module.css";
 
 export const MENU: { name: Department; label: string }[] = [
@@ -27,8 +27,8 @@ export function NavigateModule() {
 
   useEffect(() => {
     (async function () {
-      const data = await getUsersList(depId as Department);
-      useUsersStore.setState({ users: data, displayedUsers: data });
+      const data = await getEmployees(depId as Department);
+      useEmployeesStore.setState({ employees: data, displayedEmployees: data });
     })();
   }, [depId]);
 

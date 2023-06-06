@@ -5,15 +5,15 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import { getUsersList } from "./api/users";
+import { getEmployees } from "./api/employees";
 import { EmployeeProfile } from "./pages/EmployeeProfile";
 import { Employees } from "./pages/Employees";
 import { Layout } from "./pages/Layout";
-import { useUsersStore } from "./store";
+import { useEmployeesStore } from "./store";
 
 (async function () {
-  const data = await getUsersList();
-  useUsersStore.setState({ users: data, displayedUsers: data });
+  const data = await getEmployees();
+  useEmployeesStore.setState({ employees: data, displayedEmployees: data });
 })();
 
 const router = createBrowserRouter([

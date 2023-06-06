@@ -1,6 +1,6 @@
 import { apiClient } from "./client";
 
-export interface IUser {
+export interface Employee {
   id: string;
   avatarUrl: string;
   firstName: string;
@@ -12,8 +12,8 @@ export interface IUser {
   phone: string;
 }
 
-export interface IUsersList {
-  items: Array<IUser>;
+export interface Employees {
+  items: Employee[];
 }
 
 export enum Department {
@@ -32,18 +32,17 @@ export enum Department {
   Analytics = "analytics",
 }
 
-export const getUsersList = async (dep: Department = Department.All) => {
+export const getEmployees = async (dep: Department = Department.All) => {
   const query = new URLSearchParams();
 
   query.append("__dynamic", "true");
+  query.append("__code", "500");
 
   if (typeof dep === "string") {
     query.append("__example", dep);
   }
 
-  const { data } = await apiClient.get<IUsersList>(
-    `/users?${query.toString()}`
-  );
+  const { data } = await apiClient.get<Employees>(`/users?${query.toString()}`);
 
   return data.items;
 };

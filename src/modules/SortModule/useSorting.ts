@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { useUsersStore } from "../../store";
+import { useEmployeesStore } from "../../store";
 import { getDayOfYear } from "../../utils";
 import { SortOption } from "./SortModule";
 
@@ -8,8 +8,10 @@ export const useSorting = (): [
   SortOption,
   React.Dispatch<React.SetStateAction<SortOption>>
 ] => {
-  const list = useUsersStore((state) => state.users);
-  const setDisplayedList = useUsersStore((state) => state.setdisplayedUsers);
+  const list = useEmployeesStore((state) => state.employees);
+  const setDisplayedList = useEmployeesStore(
+    (state) => state.setDisplayedEmployees
+  );
 
   const [option, setOption] = useState<SortOption>(SortOption.Default);
 

@@ -1,11 +1,13 @@
 import { ReactComponent as IconSearch } from "../../icons/24/search.svg";
-import { useUsersStore } from "../../store";
+import { useEmployeesStore } from "../../store";
 import { searchInArray } from "../../utils";
 import classes from "./SearchModule.module.css";
 
 export function SearchModule() {
-  const employees = useUsersStore((state) => state.users);
-  const setDisplayedList = useUsersStore((state) => state.setdisplayedUsers);
+  const employees = useEmployeesStore((state) => state.employees);
+  const setDisplayedList = useEmployeesStore(
+    (state) => state.setDisplayedEmployees
+  );
 
   const handleInput = (v: string) => {
     const newArray = searchInArray(v, employees, [

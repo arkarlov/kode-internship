@@ -3,11 +3,11 @@ import { Link, useParams } from "react-router-dom";
 
 import { ErrorScreen } from "../../components/ErrorScreen";
 import { User } from "../../components/User";
-import { useUsersStore } from "../../store";
+import { useEmployeesStore } from "../../store";
 import styles from "./Employees.module.css";
 
 export function Employees() {
-  const displayedList = useUsersStore((state) => state.displayedUsers);
+  const displayedList = useEmployeesStore((state) => state.displayedEmployees);
 
   return (
     <>

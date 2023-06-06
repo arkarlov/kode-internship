@@ -1,10 +1,10 @@
-import { IUser } from "../../api/users";
+import { Employee } from "../../api/employees";
 import { capitalize, getFormatDate } from "../../utils";
 import { Avatar } from "../Avatar";
 import styles from "./styles.module.css";
 
 type UserProps = {
-  user: IUser;
+  user: Employee;
   displayBirthday?: boolean;
 };
 
