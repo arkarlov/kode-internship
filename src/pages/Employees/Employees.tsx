@@ -1,25 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-import { Department, getUsersList, IUser } from "../../api/users";
-import { ErrorMsg } from "../../components/ErrorMsg";
+import { ErrorScreen } from "../../components/ErrorScreen";
 import { User } from "../../components/User";
 import { useUsersStore } from "../../store";
 import styles from "./Employees.module.css";
 
 export function Employees() {
-  // const { depId } = useParams();
-
-  // const setEmployees = useUsersStore((state) => state.setUsers);
   const displayedList = useUsersStore((state) => state.displayedUsers);
-
-  // useEffect(() => {
-  //   (async function () {
-  //     const data = await getUsersList(depId as Department);
-  //     // setEmployees(data);
-  //     useUsersStore.setState({ users: data, displayedUsers: data });
-  //   })();
-  // }, [depId, setEmployees]);
 
   return (
     <>
@@ -35,7 +23,7 @@ export function Employees() {
         </ul>
       ) : (
         <div className={styles.error}>
-          <ErrorMsg
+          <ErrorScreen
             errorType="search"
             onAction={() => {
               console.log("handle error");

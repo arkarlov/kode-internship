@@ -1,7 +1,7 @@
 import clsx from "clsx";
 
 import { ImgSrcSet, Picture } from "../Picture";
-import classes from "./ErrorMsg.module.css";
+import classes from "./ErrorScreen.module.css";
 import common_png from "./images/flying-saucer_1f6f8.png";
 import common_webp from "./images/flying-saucer_1f6f8.webp";
 import common_png_2x from "./images/flying-saucer_1f6f8@2x.png";
@@ -11,15 +11,15 @@ import search_webp from "./images/left-pointing-magnifying-glass_1f50d.webp";
 import search_png_2x from "./images/left-pointing-magnifying-glass_1f50d@2x.png";
 import search_webp_2x from "./images/left-pointing-magnifying-glass_1f50d@2x.webp";
 
-type ErrorMsgType = "common" | "search";
+type ErrorScreenType = "common" | "search";
 
-type ErrorMsgProps = {
+type ErrorScreenProps = {
   className?: string;
-  errorType: ErrorMsgType;
+  errorType: ErrorScreenType;
   onAction?: () => void;
 };
 
-type ErrorMsgContent = {
+type ErrorScreenContent = {
   heading: string;
   description: string;
   icon: {
@@ -30,7 +30,7 @@ type ErrorMsgContent = {
 };
 
 const ERROR_CONTENT: {
-  [key in ErrorMsgType]: ErrorMsgContent;
+  [key in ErrorScreenType]: ErrorScreenContent;
 } = {
   common: {
     heading: "Какой-то сверхразум все сломал",
@@ -54,7 +54,11 @@ const ERROR_CONTENT: {
   },
 };
 
-export function ErrorMsg({ className, errorType, onAction }: ErrorMsgProps) {
+export function ErrorScreen({
+  className,
+  errorType,
+  onAction,
+}: ErrorScreenProps) {
   const content = ERROR_CONTENT[errorType];
 
   return (
