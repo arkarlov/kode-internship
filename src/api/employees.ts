@@ -34,9 +34,10 @@ export enum Department {
 
 export const getEmployees = async (dep: Department = Department.All) => {
   const query = new URLSearchParams();
+  // use next line to emulate "500" response error
+  // query.append("__code", "500");
 
   query.append("__dynamic", "true");
-  query.append("__code", "500");
 
   if (typeof dep === "string") {
     query.append("__example", dep);
