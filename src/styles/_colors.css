@@ -23,5 +23,5 @@
   --button-color-primary: var(--color-active-primary);
   --button-text-color-primary: var(--color-text-on-active);
 
-  --skeletonn-gradient: var(--gradient-primary);
+  --skeleton-gradient: var(--gradient-primary);
 }
