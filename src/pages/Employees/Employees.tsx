@@ -28,28 +28,22 @@ export function Employees() {
       </div>
     );
 
+  if (displayedList.length === 0)
+    return (
+      <div className={styles.error}>
+        <ErrorScreen errorType="search" />
+      </div>
+    );
+
   return (
-    <>
-      {displayedList.length > 0 ? (
-        <ul className={styles.list}>
-          {displayedList.map((user) => (
-            <li key={user.id} className={styles.item}>
-              <Link to={`/employee/${user.id}`}>
-                <User user={user} />
-              </Link>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <div className={styles.error}>
-          <ErrorScreen
-            errorType="search"
-            onAction={() => {
-              console.log("handle error");
-            }}
-          />
-        </div>
-      )}
-    </>
+    <ul className={styles.list}>
+      {displayedList.map((user) => (
+        <li key={user.id} className={styles.item}>
+          <Link to={`/employee/${user.id}`}>
+            <User user={user} />
+          </Link>
+        </li>
+      ))}
+    </ul>
   );
 }
