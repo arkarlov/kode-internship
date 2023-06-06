@@ -1,12 +1,8 @@
 import { useEffect, useState } from "react";
 
-import { useUsersStore } from "../store";
-import { getDayOfYear } from "../utils";
-
-export enum SortOption {
-  Default,
-  Birthday,
-}
+import { useUsersStore } from "../../store";
+import { getDayOfYear } from "../../utils";
+import { SortOption } from "./SortModule";
 
 export const useSorting = (): [
   SortOption,

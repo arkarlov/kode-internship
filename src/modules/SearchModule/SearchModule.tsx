@@ -1,5 +1,3 @@
-import { shallow } from "zustand/shallow";
-
 import { ReactComponent as IconSearch } from "../../icons/24/search.svg";
 import { useUsersStore } from "../../store";
 import { searchInArray } from "../../utils";
@@ -7,10 +5,7 @@ import classes from "./SearchModule.module.css";
 
 export function SearchModule() {
   const employees = useUsersStore((state) => state.users);
-  const [displayedList, setDisplayedList] = useUsersStore(
-    (state) => [state.displayedUsers, state.setdisplayedUsers],
-    shallow
-  );
+  const setDisplayedList = useUsersStore((state) => state.setdisplayedUsers);
 
   const handleInput = (v: string) => {
     const newArray = searchInArray(v, employees, [
