@@ -19,9 +19,15 @@
   --color-text-on-active: #ffffff;
 
   --gradient-primary: linear-gradient(90deg, #f3f3f6 0%, #fafafa 100%);
+  --gradient-skeleton-primary: linear-gradient(
+    90deg,
+    #f3f3f6 0%,
+    #fafafa 50%,
+    #f3f3f6 100%
+  );
 
   --button-color-primary: var(--color-active-primary);
   --button-text-color-primary: var(--color-text-on-active);
 
-  --skeleton-gradient: var(--gradient-primary);
+  --skeleton-gradient: var(--gradient-skeleton-primary);
 }

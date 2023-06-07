@@ -1,29 +1,13 @@
-import clsx from "clsx";
-
+import { Skeleton } from "../Skeleton";
 import classes from "./UserSkeleton.module.css";
 
 export function UserSkeleton() {
   return (
     <div className={classes.skeleton}>
-      <div
-        className={clsx(
-          classes.skeleton__block,
-          classes.skeleton__block_circle
-        )}
-      />
+      <Skeleton className={classes.skeleton_circle} />
       <div className={classes.skeleton__container}>
-        <div
-          className={clsx(
-            classes.skeleton__block,
-            classes.skeleton__block_string_large
-          )}
-        />
-        <div
-          className={clsx(
-            classes.skeleton__block,
-            classes.skeleton__block_string_small
-          )}
-        />
+        <Skeleton className={classes.skeleton_string_large} />
+        <Skeleton className={classes.skeleton_string_small} />
       </div>
     </div>
   );

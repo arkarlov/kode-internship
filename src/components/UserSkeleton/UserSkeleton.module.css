@@ -12,22 +12,20 @@
   gap: 6px;
 }
 
-.skeleton__block {
-  border-radius: 50px;
-  background: var(--skeleton-gradient);
-}
-
-.skeleton__block_circle {
+.skeleton_circle {
   width: 72px;
   height: 72px;
+  border-radius: 50%;
 }
 
-.skeleton__block_string_large {
+.skeleton_string_large {
   width: 144px;
   height: 16px;
+  border-radius: 50px;
 }
 
-.skeleton__block_string_small {
+.skeleton_string_small {
   width: 80px;
   height: 12px;
+  border-radius: 50px;
 }
