@@ -4,10 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 import { Employee } from "../../api/employees";
 import { Avatar } from "../../components/Avatar";
-import { ReactComponent as IconStar } from "../../icons/24/favorite.svg";
-import { ReactComponent as IconPhone } from "../../icons/24/phone-alt.svg";
-import { ReactComponent as IconShevronLeft } from "../../icons/24/Right.svg";
-import { testUser } from "../../mock/user";
+import { Button } from "../../components/Button";
+import { Icon } from "../../components/Icon";
 import { useEmployeesStore } from "../../store";
 import { getFormatDate } from "../../utils";
 import { getNoun } from "../../utils";
@@ -39,14 +37,13 @@ export function EmployeeProfile() {
   return (
     <div className={styles.employee}>
       <header className={styles.header}>
-        <button
-          className={styles.back}
+        <Button
           onClick={() => {
             navigate(-1);
           }}
         >
-          <IconShevronLeft />
-        </button>
+          <Icon name="shevron-left" />
+        </Button>
       </header>
       <div className={styles.wrapper}>
         <Avatar
@@ -66,7 +63,7 @@ export function EmployeeProfile() {
         <ul className={styles.list}>
           <li className={styles.item}>
             <div className={styles.value}>
-              <IconStar />
+              <Icon name="star" />
               <p>
                 {getFormatDate(employee.birthday, {
                   year: "numeric",
@@ -79,7 +76,7 @@ export function EmployeeProfile() {
           </li>
           <li className={styles.item}>
             <div className={styles.value}>
-              <IconPhone />
+              <Icon name="phone" />
               <p>{employee.phone}</p>
             </div>
           </li>

@@ -1,8 +1,8 @@
 import { ReactNode } from "react";
 
 import { Button } from "../Button";
+import { Icon } from "../Icon";
 import { ReactPortal } from "../ReactPortal";
-import { ReactComponent as Cross } from "./cancel_16.svg";
 import classes from "./Modal.module.css";
 
 type ModalProps = {
@@ -19,7 +19,7 @@ export function Modal({ children, opened, onClose }: ModalProps) {
       <div aria-hidden className={classes.overlay} onClick={onClose} />
       <div className={classes.modal}>
         <Button className={classes.close} onClick={onClose} rounded>
-          <Cross />
+          <Icon name="cross" size="sm" />
         </Button>
         {children}
       </div>

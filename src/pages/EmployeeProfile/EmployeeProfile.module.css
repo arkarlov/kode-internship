@@ -7,11 +7,6 @@
   padding: 22px 24px 14px;
   background-color: var(--color-background-secondary);
 }
-.back {
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
-}
 .wrapper {
   padding-block: 12px 24px;
   display: flex;

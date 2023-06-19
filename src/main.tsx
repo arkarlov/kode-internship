@@ -3,8 +3,13 @@ import "./index.css";
 
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
 
+import { ErrorScreen } from "./components/ErrorScreen";
 import { loadEmployees } from "./modules/LoadModule";
 import { EmployeeProfile } from "./pages/EmployeeProfile";
 import { Employees } from "./pages/Employees";
@@ -17,7 +22,12 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
-    errorElement: <h1>404</h1>,
+    errorElement: (
+      <ErrorScreen
+        errorType="common"
+        onAction={() => <Navigate to="/" replace={true} />}
+      />
+    ),
     children: [
       { index: true, element: <Employees /> },
       { path: "department/:depId", index: true, element: <Employees /> },

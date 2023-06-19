@@ -1,10 +1,10 @@
 import clsx from "clsx";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Outlet } from "react-router-dom";
 
 import { Button } from "../../components/Button";
+import { Icon } from "../../components/Icon";
 import { Modal } from "../../components/Modal";
-import { ReactComponent as IconSort } from "../../icons/24/list-ui-alt.svg";
 import { NavigateModule } from "../../modules/NavigateModule";
 import { SearchModule } from "../../modules/SearchModule";
 import { SortModule, SortOption, useSorting } from "../../modules/SortModule";
@@ -38,19 +38,15 @@ export function Layout() {
               setShowModal(true);
             }}
           >
-            <IconSort className={styles.icon} />
+            <Icon name="list" />
           </Button>
-          <button
-            onClick={() => {
-              setShowModal(true);
-            }}
-          ></button>
         </div>
 
         <nav className={styles.nav}>
           <NavigateModule />
         </nav>
       </header>
+
       <main className={styles.main}>
         <Outlet />
       </main>

@@ -1,4 +1,4 @@
-import { ReactComponent as IconSearch } from "../../icons/24/search.svg";
+import { Icon } from "../../components/Icon";
 import { useEmployeesStore } from "../../store";
 import { searchInArray } from "../../utils";
 import classes from "./SearchModule.module.css";
@@ -21,7 +21,7 @@ export function SearchModule() {
 
   return (
     <div className={classes.search}>
-      <IconSearch className={classes.search__icon} />
+      <Icon name="search" />
       <input
         className={classes.search__input}
         type="text"

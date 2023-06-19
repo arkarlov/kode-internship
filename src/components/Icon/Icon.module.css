@@ -1,0 +1,13 @@
+.icon {
+  fill: currentColor;
+}
+
+.icon_size_sm {
+  width: 16px;
+  height: 16px;
+}
+
+.icon_size_md {
+  width: 24px;
+  height: 24px;
+}
