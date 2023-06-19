@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import { useEffect, useState } from "react";
 
+import { Skeleton } from "../Skeleton";
 import placeholder from "./images/Rectangle 191@2x.png";
 import styles from "./styles.module.css";
 
@@ -30,7 +31,11 @@ export function Avatar({ url, title, className }: AvatarProps) {
 
   return (
     <div className={clsx(styles.avatar, loading && styles.loading, className)}>
-      {loading ? "loader here" : <img src={imgSrc} alt={title} title={title} />}
+      {loading ? (
+        <Skeleton className={styles.avatar__skeleton} />
+      ) : (
+        <img src={imgSrc} alt={title} title={title} />
+      )}
     </div>
   );
 }

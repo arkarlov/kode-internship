@@ -3,10 +3,7 @@
   height: 72px;
   border-radius: 50%;
   overflow: hidden;
-}
-
-.avatar.loading {
-  background: var(--skeletonn-gradient);
+  background: var(--gradient-primary);
 }
 
 .avatar.loading img {
