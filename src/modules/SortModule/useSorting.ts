@@ -1,23 +1,21 @@
 import { useEffect, useState } from "react";
 
 import { useEmployeesStore } from "../../store";
+import { useAppStore } from "../../store/app";
 import { getDayOfYear } from "../../utils";
 import { SortOption } from "./SortModule";
 
-export const useSorting = (): [
-  SortOption,
-  React.Dispatch<React.SetStateAction<SortOption>>
-] => {
+export const useSorting = (): void => {
   const list = useEmployeesStore((state) => state.employees);
   const setDisplayedList = useEmployeesStore(
     (state) => state.setDisplayedEmployees
   );
 
-  const [option, setOption] = useState<SortOption>(SortOption.Default);
+  const sortBy = useAppStore((state) => state.sortBy);
 
   useEffect(() => {
     const arr = [...list];
-    switch (option) {
+    switch (sortBy) {
       case SortOption.Birthday:
         arr.sort((a, b) => {
           return (
@@ -36,7 +34,5 @@ export const useSorting = (): [
     }
 
     setDisplayedList(arr);
-  }, [option, list, setDisplayedList]);
-
-  return [option, setOption];
+  }, [sortBy, list]);
 };

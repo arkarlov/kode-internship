@@ -8,15 +8,18 @@ import { ReactComponent as IconSort } from "../../icons/24/list-ui-alt.svg";
 import { NavigateModule } from "../../modules/NavigateModule";
 import { SearchModule } from "../../modules/SearchModule";
 import { SortModule, SortOption, useSorting } from "../../modules/SortModule";
+import { useAppStore } from "../../store/app";
 import styles from "./Layout.module.css";
 
 export function Layout() {
-  const [showModal, setShowModal] = useState(false);
+  const sortBy = useAppStore((s) => s.sortBy);
+  const setSortBy = useAppStore((s) => s.setSortBy);
 
-  const [sortValue, setSortValue] = useSorting();
+  const [showModal, setShowModal] = useState(false);
+  useSorting();
 
   const onSort = (v: SortOption) => {
-    setSortValue(v);
+    setSortBy(v);
     setShowModal(false);
   };
 
@@ -30,7 +33,7 @@ export function Layout() {
 
           <Button
             className={clsx(styles.button)}
-            active={sortValue !== SortOption.Default}
+            active={sortBy !== SortOption.Default}
             onClick={() => {
               setShowModal(true);
             }}
@@ -60,7 +63,7 @@ export function Layout() {
       >
         <div className={styles.modal}>
           <h3 className={styles.modal__heading}>Сортировка</h3>
-          <SortModule option={sortValue} onSort={onSort} />
+          <SortModule option={sortBy} onSort={onSort} />
         </div>
       </Modal>
     </>

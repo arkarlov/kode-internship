@@ -1,11 +1,16 @@
 import { create } from "zustand";
 
+import { SortOption } from "../modules/SortModule";
+
 interface AppStore {
   error: string | null;
   setError: (v: string | null) => void;
 
   loading: boolean;
   setLoading: (v: boolean) => void;
+
+  sortBy: SortOption;
+  setSortBy: (v: SortOption) => void;
 }
 
 export const useAppStore = create<AppStore>((set) => ({
@@ -14,4 +19,7 @@ export const useAppStore = create<AppStore>((set) => ({
 
   loading: true,
   setLoading: (v) => set({ loading: v }),
+
+  sortBy: SortOption.Default,
+  setSortBy: (v) => set({ sortBy: v }),
 }));
