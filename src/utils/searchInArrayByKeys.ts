@@ -1,4 +1,4 @@
-export function searchInArray<T extends { [key: string]: any }>(
+export function searchInArrayByKeys<T extends { [key: string]: any }>(
   search: string,
   array: T[],
   keys?: (keyof T)[]

@@ -1,6 +1,7 @@
 import { Icon } from "../../components/Icon";
 import { useEmployeesStore } from "../../store";
-import { searchInArray } from "../../utils";
+import { useAppStore } from "../../store/app";
+import { searchInArrayByKeys } from "../../utils";
 import classes from "./SearchModule.module.css";
 
 export function SearchModule() {
@@ -8,9 +9,12 @@ export function SearchModule() {
   const setDisplayedList = useEmployeesStore(
     (state) => state.setDisplayedEmployees
   );
+  const search = useAppStore((state) => state.search);
+  const setSearch = useAppStore((state) => state.setSearch);
 
   const handleInput = (v: string) => {
-    const newArray = searchInArray(v, employees, [
+    setSearch(v);
+    const newArray = searchInArrayByKeys(v, employees, [
       "firstName",
       "lastName",
       "userTag",
@@ -27,6 +31,7 @@ export function SearchModule() {
         type="text"
         placeholder="Введи имя, тег, почту..."
         onChange={(e) => handleInput(e.target.value)}
+        value={search}
       />
     </div>
   );

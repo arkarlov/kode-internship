@@ -11,6 +11,9 @@ interface AppStore {
 
   sortBy: SortOption;
   setSortBy: (v: SortOption) => void;
+
+  search: string;
+  setSearch: (v: string) => void;
 }
 
 export const useAppStore = create<AppStore>((set) => ({
@@ -22,4 +25,7 @@ export const useAppStore = create<AppStore>((set) => ({
 
   sortBy: SortOption.Default,
   setSortBy: (v) => set({ sortBy: v }),
+
+  search: "",
+  setSearch: (v) => set({ search: v }),
 }));
