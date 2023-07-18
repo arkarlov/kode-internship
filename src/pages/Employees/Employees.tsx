@@ -5,23 +5,20 @@ import { Outlet } from "react-router-dom";
 import { Button } from "../../components/Button";
 import { Icon } from "../../components/Icon";
 import { Modal } from "../../components/Modal";
+import { useSearching, useSorting } from "../../hooks";
 import { NavigateModule } from "../../modules/NavigateModule";
 import { SearchModule } from "../../modules/SearchModule";
-import { SortModule, SortOption, useSorting } from "../../modules/SortModule";
+import { SortModule, SortOption } from "../../modules/SortModule";
 import { useAppStore } from "../../store/app";
 import styles from "./Employees.module.css";
 
 export function Employees() {
-  const sortBy = useAppStore((s) => s.sortBy);
-  const setSortBy = useAppStore((s) => s.setSortBy);
-
   const [showModal, setShowModal] = useState(false);
-  useSorting();
 
-  const onSort = (v: SortOption) => {
-    setSortBy(v);
-    setShowModal(false);
-  };
+  const sortBy = useAppStore((s) => s.sortBy);
+
+  useSorting();
+  useSearching();
 
   return (
     <>
@@ -59,7 +56,11 @@ export function Employees() {
       >
         <div className={styles.modal}>
           <h3 className={styles.modal__heading}>Сортировка</h3>
-          <SortModule option={sortBy} onSort={onSort} />
+          <SortModule
+            onSort={() => {
+              setShowModal(false);
+            }}
+          />
         </div>
       </Modal>
     </>

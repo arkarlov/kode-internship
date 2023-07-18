@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
-import { useEmployeesStore } from "../../store";
-import { useAppStore } from "../../store/app";
-import { getDayOfYear } from "../../utils";
-import { SortOption } from "./SortModule";
+import { SortOption } from "../modules/SortModule/SortModule";
+import { useEmployeesStore } from "../store";
+import { useAppStore } from "../store/app";
+import { getDayOfYear } from "../utils";
 
 export const useSorting = (): void => {
   const list = useEmployeesStore((state) => state.employees);

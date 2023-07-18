@@ -1,4 +1,5 @@
 import { Radio } from "../../components/Radio";
+import { useAppStore } from "../../store/app";
 
 export enum SortOption {
   Default,
@@ -6,12 +7,15 @@ export enum SortOption {
 }
 
 type SortModuleProps = {
-  option: SortOption;
   onSort?: (v: SortOption) => void;
 };
 
-export function SortModule({ option, onSort }: SortModuleProps) {
+export function SortModule({ onSort }: SortModuleProps) {
+  const sortBy = useAppStore((state) => state.sortBy);
+  const setSortBy = useAppStore((state) => state.setSortBy);
+
   const handleSort = (v: SortOption) => {
+    setSortBy(v);
     onSort && onSort(v);
   };
 
@@ -22,7 +26,7 @@ export function SortModule({ option, onSort }: SortModuleProps) {
         { value: SortOption.Default, label: "По алфавиту" },
         { value: SortOption.Birthday, label: "По дню рождения" },
       ]}
-      value={option}
+      value={sortBy}
       onChange={(v) => {
         handleSort(v as SortOption);
       }}
