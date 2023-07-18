@@ -12,8 +12,7 @@ import {
 import { ErrorScreen } from "./components/ErrorScreen";
 import { loadEmployees } from "./modules/LoadModule";
 import { EmployeeProfile } from "./pages/EmployeeProfile";
-import { Employees } from "./pages/Employees";
-import { Layout } from "./pages/Layout";
+import { EmployeeList, Employees } from "./pages/Employees";
 
 // initial data load
 loadEmployees();
@@ -21,7 +20,7 @@ loadEmployees();
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
+    element: <Employees />,
     errorElement: (
       <ErrorScreen
         errorType="common"
@@ -29,8 +28,8 @@ const router = createBrowserRouter([
       />
     ),
     children: [
-      { index: true, element: <Employees /> },
-      { path: "department/:depId", index: true, element: <Employees /> },
+      { index: true, element: <EmployeeList /> },
+      { path: "department/:depId", index: true, element: <EmployeeList /> },
     ],
   },
   {

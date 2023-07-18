@@ -1,3 +1,4 @@
-import { Employees } from "./Employees";
+import { Employees } from "../Employees/Employees";
+import { EmployeeList } from "./EmployeeList/EmployeeList";
 
-export { Employees };
+export { EmployeeList, Employees };

@@ -1,61 +1,67 @@
-import { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import clsx from "clsx";
+import { useState } from "react";
+import { Outlet } from "react-router-dom";
 
-import { ErrorScreen } from "../../components/ErrorScreen";
-import { User } from "../../components/User";
-import { UserSkeleton } from "../../components/UserSkeleton/UserSkeleton";
-import { useEmployeesStore } from "../../store";
+import { Button } from "../../components/Button";
+import { Icon } from "../../components/Icon";
+import { Modal } from "../../components/Modal";
+import { NavigateModule } from "../../modules/NavigateModule";
+import { SearchModule } from "../../modules/SearchModule";
+import { SortModule, SortOption, useSorting } from "../../modules/SortModule";
 import { useAppStore } from "../../store/app";
 import styles from "./Employees.module.css";
 
 export function Employees() {
-  const navigate = useNavigate();
+  const sortBy = useAppStore((s) => s.sortBy);
+  const setSortBy = useAppStore((s) => s.setSortBy);
 
-  const loadingError = useAppStore((state) => state.error);
-  const loading = useAppStore((state) => state.loading);
-  const displayedList = useEmployeesStore((state) => state.displayedEmployees);
+  const [showModal, setShowModal] = useState(false);
+  useSorting();
 
-  if (loading)
-    return (
-      <ul className={styles.list}>
-        {Array(8)
-          .fill(0)
-          .map((_, i) => (
-            <li key={i} className={styles.item}>
-              <UserSkeleton />
-            </li>
-          ))}
-      </ul>
-    );
-
-  if (loadingError)
-    return (
-      <div className={styles.error}>
-        <ErrorScreen
-          errorType="common"
-          onAction={() => {
-            navigate(window.location.pathname, { replace: true });
-          }}
-        />
-      </div>
-    );
-
-  if (displayedList.length === 0)
-    return (
-      <div className={styles.error}>
-        <ErrorScreen errorType="search" />
-      </div>
-    );
+  const onSort = (v: SortOption) => {
+    setSortBy(v);
+    setShowModal(false);
+  };
 
   return (
-    <ul className={styles.list}>
-      {displayedList.map((user) => (
-        <li key={user.id} className={styles.item}>
-          <Link to={`/employee/${user.id}`}>
-            <User user={user} />
-          </Link>
-        </li>
-      ))}
-    </ul>
+    <>
+      <header className={styles.header}>
+        <h2 className={styles.title}>Поиск</h2>
+
+        <div className={styles.search}>
+          <SearchModule />
+
+          <Button
+            className={clsx(styles.button)}
+            active={sortBy !== SortOption.Default}
+            onClick={() => {
+              setShowModal(true);
+            }}
+          >
+            <Icon name="list" />
+          </Button>
+        </div>
+
+        <nav className={styles.nav}>
+          <NavigateModule />
+        </nav>
+      </header>
+
+      <main className={styles.main}>
+        <Outlet />
+      </main>
+
+      <Modal
+        opened={showModal}
+        onClose={() => {
+          setShowModal(false);
+        }}
+      >
+        <div className={styles.modal}>
+          <h3 className={styles.modal__heading}>Сортировка</h3>
+          <SortModule option={sortBy} onSort={onSort} />
+        </div>
+      </Modal>
+    </>
   );
 }
