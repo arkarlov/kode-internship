@@ -1,5 +1,5 @@
-export function searchInArrayByKeys<T extends Record<string, any>>(
-  search: string,
+export function filterArrayByObjectKeys<T extends Record<string, any>>(
+  filterString: string,
   array: T[],
   keys?: (keyof T)[]
 ) {
@@ -9,7 +9,7 @@ export function searchInArrayByKeys<T extends Record<string, any>>(
 
       return (
         typeof prop === "string" &&
-        prop.toLocaleLowerCase().startsWith(search.toLocaleLowerCase())
+        prop.toLocaleLowerCase().startsWith(filterString.toLocaleLowerCase())
       );
     })
   );
