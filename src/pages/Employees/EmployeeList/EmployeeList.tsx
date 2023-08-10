@@ -1,45 +1,52 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
+import { Employee } from "../../../api/employees";
+import { Divider } from "../../../components/Divider";
 import { ErrorScreen } from "../../../components/ErrorScreen";
 import { User } from "../../../components/User";
-import { UserSkeleton } from "../../../components/UserSkeleton/UserSkeleton";
+import { SortOption } from "../../../constants";
+import { getSortedEmployees } from "../../../handlers";
 import { useEmployeesStore } from "../../../store";
 import { useAppStore } from "../../../store/app";
+import { getDayOfYear } from "../../../utils";
 import styles from "./EmployeeList.module.css";
 
 export function EmployeeList() {
-  const navigate = useNavigate();
+  const sortBy = useAppStore((state) => state.sortBy);
 
-  const loadingError = useAppStore((state) => state.error);
-  const loading = useAppStore((state) => state.loading);
-  const displayedList = useEmployeesStore((state) => state.displayedEmployees);
+  const displayedEmployees = useEmployeesStore(
+    (state) => state.displayedEmployees
+  );
 
-  if (loading)
-    return (
-      <ul className={styles.list}>
-        {Array(8)
-          .fill(0)
-          .map((_, i) => (
-            <li key={i} className={styles.item}>
-              <UserSkeleton />
-            </li>
-          ))}
-      </ul>
-    );
+  const [currentYearList, setCurrentYearList] = useState<Employee[]>([]);
+  const [nextYearList, setNextYearList] = useState<Employee[]>([]);
 
-  if (loadingError)
-    return (
-      <div className={styles.error}>
-        <ErrorScreen
-          errorType="common"
-          onAction={() => {
-            navigate(window.location.pathname, { replace: true });
-          }}
-        />
-      </div>
-    );
+  useEffect(() => {
+    const sortedEmployees = getSortedEmployees(displayedEmployees);
 
-  if (displayedList.length === 0)
+    if (sortBy === SortOption.Birthday) {
+      const currentDay = getDayOfYear(new Date());
+      const currentYear: Employee[] = [];
+      const nextYear: Employee[] = [];
+
+      sortedEmployees.forEach((employee) => {
+        if (getDayOfYear(new Date(employee.birthday)) < currentDay) {
+          nextYear.push(employee);
+        } else {
+          currentYear.push(employee);
+        }
+      });
+
+      setCurrentYearList(currentYear);
+      setNextYearList(nextYear);
+    } else {
+      setCurrentYearList(sortedEmployees);
+      setNextYearList([]);
+    }
+  }, [displayedEmployees, sortBy]);
+
+  if (displayedEmployees.length === 0)
     return (
       <div className={styles.error}>
         <ErrorScreen errorType="search" />
@@ -48,13 +55,29 @@ export function EmployeeList() {
 
   return (
     <ul className={styles.list}>
-      {displayedList.map((user) => (
-        <li key={user.id} className={styles.item}>
-          <Link to={`/employee/${user.id}`}>
-            <User user={user} />
+      {currentYearList.map((employee) => (
+        <li key={employee.id} className={styles.item}>
+          <Link to={`/employee/${employee.id}`}>
+            <User user={employee} />
           </Link>
         </li>
       ))}
+      {nextYearList.length > 0 && (
+        <>
+          <li>
+            <Divider>
+              <p className={styles.divider}>{new Date().getFullYear() + 1}</p>
+            </Divider>
+          </li>
+          {nextYearList.map((employee) => (
+            <li key={employee.id} className={styles.item}>
+              <Link to={`/employee/${employee.id}`}>
+                <User user={employee} />
+              </Link>
+            </li>
+          ))}
+        </>
+      )}
     </ul>
   );
 }

@@ -12,3 +12,11 @@
   justify-content: center;
   align-items: center;
 }
+
+.divider {
+  width: 160px;
+  text-align: center;
+
+  font: normal 500 var(--font-text);
+  color: var(--color-default-secondary);
+}

@@ -1,4 +1,4 @@
-import { Employees } from "../Employees/Employees";
-import { EmployeeList } from "./EmployeeList/EmployeeList";
+import { EmployeeList } from "./EmployeeList";
+import { Employees } from "./Employees";
 
 export { EmployeeList, Employees };

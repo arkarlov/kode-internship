@@ -1,0 +1,15 @@
+export enum Department {
+  All = "all",
+  Android = "android",
+  Ios = "ios",
+  Design = "design",
+  Management = "management",
+  Qa = "qa",
+  Back_office = "back_office",
+  Frontend = "frontend",
+  Hr = "hr",
+  Pr = "pr",
+  Backend = "backend",
+  Support = "support",
+  Analytics = "analytics",
+}

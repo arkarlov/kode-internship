@@ -5,10 +5,10 @@ import classes from "./Button.module.css";
 
 type ButtonProps = {
   className?: string;
-  onClick: MouseEventHandler;
   active?: boolean;
   rounded?: boolean;
   children: ReactNode;
+  onClick: MouseEventHandler;
 };
 
 export function Button({

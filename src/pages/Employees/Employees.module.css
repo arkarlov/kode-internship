@@ -44,3 +44,11 @@
   font: var(--typography-title-secondary);
   color: var(--color-text-primary);
 }
+
+.error {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

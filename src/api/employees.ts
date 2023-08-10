@@ -1,3 +1,4 @@
+import { Department } from "../constants";
 import { apiClient } from "./client";
 
 export interface Employee {
@@ -12,30 +13,16 @@ export interface Employee {
   phone: string;
 }
 
-export interface Employees {
+export interface EmployeesResponse {
   items: Employee[];
-}
-
-export enum Department {
-  All = "all",
-  Android = "android",
-  Ios = "ios",
-  Design = "design",
-  Management = "management",
-  Qa = "qa",
-  Back_office = "back_office",
-  Frontend = "frontend",
-  Hr = "hr",
-  Pr = "pr",
-  Backend = "backend",
-  Support = "support",
-  Analytics = "analytics",
 }
 
 export const getEmployees = async (dep: Department = Department.All) => {
   const params = new URLSearchParams();
   // use next line to emulate "500" response error
-  // params.append("__code", "500");
+  if (Math.random() > 0.8) {
+    params.append("__code", "500");
+  }
 
   params.append("__dynamic", "true");
 
@@ -43,7 +30,7 @@ export const getEmployees = async (dep: Department = Department.All) => {
     params.append("__example", dep);
   }
 
-  const { data } = await apiClient.get<Employees>("/users", {
+  const { data } = await apiClient.get<EmployeesResponse>("/users", {
     params,
   });
 

@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-import { SortOption } from "../modules/SortModule";
+import { SortOption } from "../constants";
 
 interface AppStore {
   error: string | null;
@@ -23,7 +23,7 @@ export const useAppStore = create<AppStore>((set) => ({
   loading: true,
   setLoading: (v) => set({ loading: v }),
 
-  sortBy: SortOption.Default,
+  sortBy: SortOption.Alphabet,
   setSortBy: (v) => set({ sortBy: v }),
 
   search: "",
