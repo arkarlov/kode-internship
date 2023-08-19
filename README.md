@@ -6,7 +6,12 @@ https://github.com/appKODE/trainee-test-frontend
 
 ## Table of Contents
 
+- [Demo](#demo)
 - [Installation and Setup](#installation-and-setup)
+
+## Demo
+
+https://artemkarlov.github.io/kode-internship/
 
 ## Installation and Setup
 
