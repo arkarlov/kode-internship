@@ -10,6 +10,7 @@ import svgr from "vite-plugin-svgr";
 dns.setDefaultResultOrder("verbatim");
 
 export default defineConfig({
+  base: "/kode-internship/",
   server: {
     host: "localhost",
     port: 3000,
