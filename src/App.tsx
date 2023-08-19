@@ -1,10 +1,14 @@
-import { createBrowserRouter, Navigate } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
 
 import { ErrorScreen } from "./components/ErrorScreen";
 import { EmployeeProfile } from "./pages/EmployeeProfile";
 import { EmployeeList, Employees } from "./pages/Employees";
 
-export const router = createBrowserRouter([
+const routes = [
   {
     path: "/",
     element: <Employees />,
@@ -23,4 +27,10 @@ export const router = createBrowserRouter([
     path: "employee/:employeeId",
     element: <EmployeeProfile />,
   },
-]);
+];
+
+const router = createBrowserRouter(routes, {
+  basename: import.meta.env.DEV ? "/" : "/kode-internship/",
+});
+
+export const App = () => <RouterProvider router={router} />;
