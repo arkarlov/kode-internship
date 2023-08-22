@@ -6,7 +6,7 @@
   "scripts": {
     "start": "vite --open",
     "build": "tsc && vite build",
-    "lint": "npx eslint src/*",
+    "lint": "npx eslint --ext .tsx,.ts src/",
     "prepare": "husky install",
     "test": ""
   },
