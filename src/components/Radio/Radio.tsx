@@ -3,12 +3,12 @@ import { useId } from "react";
 
 import classes from "./Radio.module.css";
 
-type RadioOption = {
+export type RadioOption = {
   value: RadioButtonProps["value"];
   label: RadioButtonProps["label"];
 };
 
-type RadioProps = {
+export type RadioProps = {
   options: RadioOption[];
   name: RadioButtonProps["groupName"];
   value: RadioButtonProps["value"];
