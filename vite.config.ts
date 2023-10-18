@@ -1,5 +1,8 @@
+/// <reference types="vitest" />
+
 import eslintPlugin from "@nabla/vite-plugin-eslint";
-import swcReactRefresh from "@vitejs/plugin-react-swc";
+// import swcReactRefresh from "@vitejs/plugin-react-swc";
+import react from "@vitejs/plugin-react";
 import autoprefixer from "autoprefixer";
 import dns from "dns";
 import postcssLogical from "postcss-logical";
@@ -16,12 +19,22 @@ export default defineConfig(({ command }) => {
       host: "localhost",
       port: 3000,
     },
-    plugins: [swcReactRefresh(), svgr(), eslintPlugin()],
+    plugins: [
+      react(),
+      // swcReactRefresh(),
+      svgr(),
+      eslintPlugin(),
+    ],
     esbuild: { jsx: "automatic" },
     css: {
       postcss: {
         plugins: [autoprefixer, postcssLogical, postcssNormalize()],
       },
+    },
+    test: {
+      globals: true,
+      environment: "jsdom",
+      setupFiles: ["./src/test/setup.ts"],
     },
   };
 
