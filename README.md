@@ -11,7 +11,7 @@ https://github.com/appKODE/trainee-test-frontend
 
 ## Demo
 
-https://artemkarlov.github.io/kode-internship/
+https://arkarlov.github.io/kode-internship/
 
 ## Installation and Setup
 
